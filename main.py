@@ -17,7 +17,7 @@ def generate_response(prompt):
         )
     message = completions.choices[0].text
     return message
-st.title("KONECTA AI & DS - Karin GPT-3")
+st.title("Demo GPT-3 Chatbot")
 
 # Storing the chat
 if 'generated' not in st.session_state:
