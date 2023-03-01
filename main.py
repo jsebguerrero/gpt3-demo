@@ -28,7 +28,7 @@ if 'past' not in st.session_state:
 
 # We will get the user's input by calling the get_text function
 def get_text():
-    input_text = st.text_input("You: ","Hola", key="input")
+    input_text = st.text_input("You: ","Hello, rumour has it that you are the new chatbot engine for Konecta, what can you do for me?", key="input")
     return input_text
 
 user_input = get_text()
