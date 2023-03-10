@@ -7,15 +7,15 @@ from streamlit_chat import message
 openai.api_key = st.secrets["api_secret"]
 def generate_response(prompt):
     completions = openai.Completion.create(
-        model="text-davinci-003",
+        model="ada:ft-personal-2023-03-10-19-55-26",
         prompt=prompt + '\n\n###\n\n',
-        temperature=0.5,
-        max_tokens=300,
+        temperature=0.0,
+        max_tokens=100,
         top_p=0.3,
         frequency_penalty=0.5,
         presence_penalty=0.0
         )
-    message = completions.choices[0].text
+    message = completions.choices[0].text.strip()[0]
     return message
 st.title("Demo GPT-3 Chatbot Conversational")
 
