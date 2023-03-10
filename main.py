@@ -6,16 +6,17 @@ from streamlit_chat import message
 
 openai.api_key = st.secrets["api_secret"]
 def generate_response(prompt):
-    completions = openai.Completion.create(
-        model="text-davinci-003",
+    res = openai.Completion.create(
+        model='ada:ft-personal-2023-03-10-19-55-26',
         prompt=prompt + '\n\n###\n\n',
-        temperature=0.5,
-        max_tokens=300,
+        temperature=0.0,
+        max_tokens=100,
         top_p=0.3,
-        frequency_penalty=0.5,
-        presence_penalty=0.0
+        stop=["\n\n###\n\n"]
         )
-    message = completions.choices[0].text
+    message = res.choices[0].text.strip()
+    if message == '':
+        return 'Sorry, I cannot recognize what you said'
     return message
 st.title("Demo GPT-3 Chatbot")
 
@@ -28,7 +29,7 @@ if 'past' not in st.session_state:
 
 # We will get the user's input by calling the get_text function
 def get_text():
-    input_text = st.text_input("You: ","Hola, me dicen que eres el nuevo chatbot de Konecta, que puedes ofrecerle a una empresa de BPO como chatbot?", key="input")
+    input_text = st.text_input("You: ","Quiero estudiar ingeniería de sistemas", key="input")
     return input_text
 
 user_input = get_text()
