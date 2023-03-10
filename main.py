@@ -18,7 +18,7 @@ def generate_response(prompt):
     if message == '':
         return 'Sorry, I cannot recognize what you said'
     return message
-st.title("Demo GPT-3 Chatbot")
+st.title("Demo GPT-3 Chatbot Classification")
 
 # Storing the chat
 if 'generated' not in st.session_state:
