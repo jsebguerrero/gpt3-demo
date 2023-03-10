@@ -14,9 +14,10 @@ def generate_response(prompt):
         top_p=0.3,
         stop=["\n\n###\n\n"]
         )
-    message = res.choices[0].text.strip()
-    if message == '':
-        return 'Sorry, I cannot recognize what you said'
+    try:
+        message = res.choices[0].text.strip()[0]
+    except:
+        message = 'Sorry, I cannot recognize what you said'
     return message
 st.title("Demo GPT-3 Chatbot Classification")
 
